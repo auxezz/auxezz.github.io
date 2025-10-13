@@ -5,13 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxio AI - AI Solutions That Just Work</title>
     <!-- Favicon link (assuming the file is placed in the root directory) -->
-    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- Load Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    
+    <style>
+        /* Custom styles for the brand colors and font */
+        :root {
+            --primary-color: #7c3aed; /* Deep Purple */
+            --secondary-color: #3b82f6; /* Blue */
+            --background-dark: #0a0a0a; /* Almost black */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+            transform: translateY(-2px);
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #a78bfa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-glow {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+    </style>
 </head>
 <body class="text-white min-h-screen">
 
@@ -112,9 +143,8 @@
         </section>
 
     </main>
-
     <!-- Footer -->
-    <footer class="mt-20 border-t border-gray-800 p-8">
+<footer class="mt-20 border-t border-gray-800 p-8">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left text-gray-500 text-sm">
             
             <!-- Branding and Copyright -->
@@ -123,7 +153,7 @@
                 &copy; 2025 Luxio AI. All rights reserved.
             </div>
 
-            <!-- Contact and Social -->
+            <!-- Contact and Social / Legal Links -->
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
                 <a href="mailto:luxio.ai.help@gmail.com" class="hover:text-white transition duration-300">
                     <i class="fas fa-envelope mr-2"></i> luxio.ai.help@gmail.com
@@ -131,6 +161,15 @@
                 
                 <a href="https://github.com/Luxio-AI" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">
                     <i class="fab fa-github mr-2"></i> GitHub Organization
+                </a>
+                
+                <!-- NEW TERMS OF SERVICE LINK -->
+                <a href="terms.html" class="hover:text-white transition duration-300">
+                    Terms of Service
+                </a>
+                <!-- Privacy Policy Link (Placeholder) -->
+                <a href="#" class="hover:text-white transition duration-300">
+                    Privacy Policy
                 </a>
             </div>
         </div>
