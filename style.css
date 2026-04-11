@@ -1,11 +1,308 @@
+:root {
+    --bg-1: #0f1118;
+    --bg-mid: #131927;
+    --bg-2: #0d1720;
+    --ink: #e9eef7;
+    --panel: rgba(16, 22, 33, 0.78);
+    --panel-border: rgba(204, 218, 238, 0.16);
+    --accent: #ff834d;
+    --accent-2: #22b6a4;
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    --glow-a: #6b2f18;
+    --glow-b: #0f5f57;
+    --chip-bg: rgba(12, 18, 28, 0.82);
+    --chip-bg-hover: rgba(24, 32, 45, 0.95);
+    --kicker: #86d9ce;
+    --card-bg: #111926;
+}
 
+body[data-theme="light"] {
+    --bg-1: #fff7e5;
+    --bg-mid: #fffdf7;
+    --bg-2: #eefcf6;
+    --ink: #1a1c1f;
+    --panel: rgba(255, 255, 255, 0.78);
+    --panel-border: rgba(26, 28, 31, 0.12);
+    --accent: #ff6a3a;
+    --accent-2: #0d9784;
+    --shadow: 0 14px 38px rgba(17, 20, 24, 0.14);
+    --glow-a: #ffd2a8;
+    --glow-b: #b8eee5;
+    --chip-bg: rgba(255, 255, 255, 0.66);
+    --chip-bg-hover: #fff;
+    --kicker: #174f4a;
+    --card-bg: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    background-color: #000000;
+    font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-mid) 45%, var(--bg-2) 100%);
+    min-height: 100vh;
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.glow {
+    position: fixed;
+    z-index: -1;
+    filter: blur(55px);
+    border-radius: 50%;
+    opacity: 0.55;
+}
+
+.glow-a {
+    width: 260px;
+    height: 260px;
+    background: var(--glow-a);
+    top: -60px;
+    right: -70px;
+}
+
+.glow-b {
+    width: 290px;
+    height: 290px;
+    background: var(--glow-b);
+    left: -80px;
+    bottom: -80px;
+}
+
+.wrap {
+    width: min(1020px, calc(100% - 2.6rem));
+    margin: 0 auto;
+}
+
+.topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0 0.9rem;
+}
+
+.brand {
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.brand-main {
+    font-family: "Bungee", "Segoe UI", sans-serif;
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.brand-sub {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    max-width: 42ch;
+    opacity: 0.8;
+}
+
+.pill-link {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 700;
+    border: 1px solid var(--panel-border);
+    background: var(--chip-bg);
+    border-radius: 999px;
+    padding: 0.5rem 0.85rem;
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.pill-link:hover {
+    transform: translateY(-2px);
+    background: var(--chip-bg-hover);
+}
+
+.theme-toggle {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--panel-border);
+    background: var(--chip-bg);
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    background: var(--chip-bg-hover);
+}
+
+.theme-toggle .icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+}
+
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+body[data-theme="light"] .theme-toggle .icon-sun {
+    display: none;
+}
+
+body[data-theme="light"] .theme-toggle .icon-moon {
+    display: block;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: clamp(1.1rem, 2.8vw, 2rem);
+}
+
+.hero {
+    margin-top: 0.4rem;
+    animation: rise 650ms cubic-bezier(0.2, 1, 0.3, 1) both;
+}
+
+.kicker {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--kicker);
 }
 
 h1 {
-    color: #ffffff;
-    text-align: center;
-    margin-top: 20%;
+    margin: 0.5rem 0 0;
+    font-size: clamp(1.8rem, 5.2vw, 3.5rem);
+    line-height: 1.08;
+    max-width: 18ch;
+}
+
+h2 {
+    margin: 0;
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+}
+
+p {
+    margin: 0.8rem 0 0;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.68rem 1.05rem;
+    background: linear-gradient(90deg, var(--accent), #ff8a42);
+    box-shadow: 0 7px 18px rgba(255, 106, 58, 0.34);
+    transition: transform 180ms ease;
+}
+
+.cta:hover {
+    transform: translateY(-2px);
+}
+
+#projects {
+    margin-top: 1rem;
+}
+
+.muted {
+    font-family: "IBM Plex Mono", monospace;
+    opacity: 0.8;
+}
+
+.project-grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 0.95rem;
+    transform: translateY(14px);
+    opacity: 0;
+    animation: rise 550ms ease forwards;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 110ms;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 220ms;
+}
+
+.project-card h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.project-card p {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.88rem;
+}
+
+.status {
+    margin-top: 1rem;
+}
+
+.footer {
+    padding: 1rem 0 2rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.9rem;
+}
+
+@keyframes rise {
+    from {
+        transform: translateY(14px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 860px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 540px) {
+    .wrap {
+        width: min(1020px, calc(100% - 1.4rem));
+    }
+
+    .panel {
+        border-radius: 18px;
+    }
 }

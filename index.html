@@ -3,10 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Placeholder</title>
+    <title>LUXIO | Literally Underestimating X-treme Issues Often</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Plus+Jakarta+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>This is only a placeholder homepage ingore this</h1>
+<body data-theme="dark">
+    <div class="glow glow-a" aria-hidden="true"></div>
+    <div class="glow glow-b" aria-hidden="true"></div>
+
+    <header class="wrap topbar">
+        <a class="brand" href="#">
+            <span class="brand-main">LUXIO</span>
+            <span class="brand-sub">Literally Underestimating X-treme Issues Often</span>
+        </a>
+        <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to light mode"
+            title="Switch to light mode"
+        >
+            <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4.25"></circle>
+                <path d="M12 2v2.5M12 19.5V22M22 12h-2.5M4.5 12H2M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8M19.1 19.1l-1.8-1.8M6.7 6.7 4.9 4.9"></path>
+            </svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 14.2A8 8 0 1 1 9.8 4 6.5 6.5 0 0 0 20 14.2z"></path>
+            </svg>
+        </button>
+    </header>
+
+    <main class="wrap">
+        <section class="hero panel">
+            <p class="kicker"></p>
+            <h1>Luxio.</h1>
+            <p>
+                We make Shit
+            </p>
+            
+        </section>
+
+        <section id="projects" class="panel">
+            <h2>Projects</h2>
+            <!--  <p class="muted">text</p> -->
+            <div class="project-grid">
+                <article class="project-card">
+                    <h3>Ai Discord Bot</h3>
+                    <p>Ai Powered Discord Bot Based on Ai Streamer Neuro-sama.</p>
+                </article>
+                <article class="project-card">
+                    <h3>Project Slot 02</h3>
+                    <p>Coming soon</p>
+                </article>
+                <article class="project-card">
+                    <h3>Project Slot 03</h3>
+                    <p>Coming soon</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel status">
+            <h2>Current Status</h2>
+        </section>
+    </main>
+
+    <footer class="wrap footer">
+        <p>Luxio, Coding Over Sleep.</p>
+    </footer>
+
+    <script>
+        (function () {
+            var toggleButton = document.getElementById("themeToggle");
+            var pageBody = document.body;
+            var storedTheme = localStorage.getItem("luxio-theme");
+            var activeTheme = storedTheme === "light" ? "light" : "dark";
+
+            pageBody.setAttribute("data-theme", activeTheme);
+            updateToggleLabel(activeTheme);
+
+            toggleButton.addEventListener("click", function () {
+                var nextTheme = pageBody.getAttribute("data-theme") === "dark" ? "light" : "dark";
+                pageBody.setAttribute("data-theme", nextTheme);
+                localStorage.setItem("luxio-theme", nextTheme);
+                updateToggleLabel(nextTheme);
+            });
+
+            function updateToggleLabel(theme) {
+                var switchTo = theme === "dark" ? "light" : "dark";
+                var label = "Switch to " + switchTo + " mode";
+                toggleButton.setAttribute("aria-label", label);
+                toggleButton.setAttribute("title", label);
+            }
+        })();
+    </script>
 </body>
 </html>
